@@ -1,0 +1,24 @@
+#config.txt
+
+[all]
+dtoverlay=dwc2
+
+
+
+#cmdline.txt
+
+modules-load=dwc2,g_ether
+
+
+#first_run.sh
+
+cat << EOF > /etc/network/interfaces.d/usb0
+auto usb0
+allow-hotplug usb0
+iface usb0 inet static
+    address 192.168.2.2
+    netmask 255.255.255.0
+    gateway 192.168.2.1
+EOF
+
+
